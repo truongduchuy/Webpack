@@ -1,0 +1,11 @@
+$text-color: red;
+$bg-color: aquamarine;
+
+.hello-world-button {
+    padding: 15px 20px;
+    background-color: $bg-color;
+}
+
+.hello-world-text {
+    color: $text-color;
+}
