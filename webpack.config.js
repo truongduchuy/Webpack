@@ -2,6 +2,7 @@ const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
@@ -9,7 +10,7 @@ module.exports = {
         // browser caching
         filename: 'bundle.[hash].js',
         path: path.resolve(__dirname, './dist'),
-        publicPath: 'dist/',
+        publicPath: '',
         // for public publicPath: 'https://somedomain.com/'
     },
     mode: 'none',
@@ -51,6 +52,13 @@ module.exports = {
             filename: 'styles.[contenthash].css'
         }),
         // clean bundles
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Hello world',
+            filename: 'subfolder/custom_filename.html',
+            meta: {
+                viewport: 'width=device-width, initial-scale=1'
+            }
+        })
     ]
 };
